@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>九一探花91版_视频内容探索平台 - 发现生活里的每一种表达</title>
+<meta name="description" content="九一探花91版是一个专注于视频内容探索与创作者社区的平台，聚合人物纪实、生活方式短片与影像创作者的持续表达。">
+<style>
+  :root{
+    --ink:#12141a;
+    --ink-2:#1c1f28;
+    --ink-3:#262a36;
+    --paper:#f6f4ef;
+    --paper-2:#efece4;
+    --line:rgba(18,20,26,.12);
+    --line-l:rgba(246,244,239,.14);
+    --accent:#e2542c;
+    --accent-2:#f3a13b;
+    --accent-soft:#ffd9c2;
+    --teal:#2f7d74;
+    --muted:#6d7280;
+    --radius:18px;
+    --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  .wrap{width:min(1180px,92vw);margin:0 auto}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.55em;
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);display:inline-block}
+  .serif{font-family:var(--serif)}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+  /* ============ TOP BAR ============ */
+  .topbar{
+    background:var(--ink);color:var(--paper-2);
+    font-size:.78rem;letter-spacing:.04em;
+  }
+  .topbar .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    height:38px;gap:1rem;
+  }
+  .topbar .tb-left{display:flex;gap:1.4rem;opacity:.75}
+  .topbar .tb-left span{display:inline-flex;align-items:center;gap:.4em}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-2);display:inline-block}
+  .topbar .tb-right{display:flex;gap:1rem;opacity:.75}
+  .topbar a:hover{color:var(--accent-2)}
+
+  /* ============ HEADER ============ */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,244,239,.86);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:2rem}
+  .brand{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+  .brand-mark{
+    width:42px;height:42px;border-radius:12px;
+    background:linear-gradient(140deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#fff;
+    box-shadow:0 8px 20px -8px rgba(226,84,44,.7);
+    position:relative;overflow:hidden;
+  }
+  .brand-mark::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.5),transparent 55%);
+  }
+  .brand-mark svg{width:22px;height:22px;position:relative;z-index:1}
+  .brand-name{font-family:var(--serif);font-weight:800;font-size:1.22rem;letter-spacing:.02em;line-height:1.15}
+  .brand-sub{font-size:.62rem;letter-spacing:.32em;color:var(--muted);text-transform:uppercase}
+  nav.menu{display:flex;gap:1.7rem;font-size:.9rem;font-weight:500}
+  nav.menu a{position:relative;padding:.3em 0;color:var(--ink-2);opacity:.82}
+  nav.menu a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;
+    background:var(--accent);transition:right .32s ease;
+  }
+  nav.menu a:hover{opacity:1}
+  nav.menu a:hover::after{right:0}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:.5em;
+    background:var(--ink);color:var(--paper);
+    padding:.68em 1.25em;border-radius:999px;font-size:.85rem;font-weight:600;
+    transition:transform .25s ease,background .25s ease;
+    flex-shrink:0;
+  }
+  .nav-cta:hover{transform:translateY(-2px);background:var(--accent)}
+  .nav-cta svg{width:14px;height:14px}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;padding:76px 0 64px;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;
+    background:radial-gradient(circle,rgba(243,161,59,.22),transparent 62%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:"";position:absolute;left:-160px;bottom:-220px;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(47,125,116,.14),transparent 62%);
+    pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center;position:relative;z-index:1}
+  .hero h1{
+    font-family:var(--serif);
+    font-size:clamp(2.6rem,5.6vw,4.4rem);
+    line-height:1.06;letter-spacing:-.02em;font-weight:800;
+    margin:1.1rem 0 1.2rem;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--accent);
+    background:linear-gradient(180deg,transparent 68%,var(--accent-soft) 68%);
+    padding:0 .08em;
+  }
+  .hero-lead{font-size:1.02rem;color:var(--muted);max-width:34em;line-height:1.95}
+  .hero-lead strong{color:var(--ink-2);font-weight:600}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.1rem;align-items:center}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:.6em;
+    background:var(--accent);color:#fff;padding:.95em 1.7em;border-radius:999px;
+    font-weight:700;font-size:.94rem;
+    box-shadow:0 14px 30px -14px rgba(226,84,44,.85);
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 38px -14px rgba(226,84,44,.9)}
+  .btn-primary svg{width:15px;height:15px}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:.6em;
+    padding:.95em 1.4em;border-radius:999px;font-weight:600;font-size:.92rem;
+    border:1.5px solid var(--line);color:var(--ink-2);
+    transition:border-color .25s ease,background .25s ease;
+  }
+  .btn-ghost:hover{border-color:var(--ink);background:rgba(18,20,26,.04)}
+  .hero-stats{display:flex;gap:2.4rem;margin-top:2.6rem;flex-wrap:wrap}
+  .hero-stats .hs-num{font-family:var(--serif);font-size:1.9rem;font-weight:800;line-height:1;letter-spacing:-.02em}
+  .hero-stats .hs-num span{color:var(--accent);font-size:1.1rem}
+  .hero-stats .hs-label{font-size:.76rem;color:var(--muted);letter-spacing:.1em;margin-top:.5em}
+
+  /* hero visual */
+  .hero-visual{position:relative}
+  .screen{
+    position:relative;border-radius:24px;overflow:hidden;
+    background:linear-gradient(150deg,#1c1f28,#2c3040 55%,#3a2a24);
+    aspect-ratio:4/3.2;
+    box-shadow:0 40px 70px -34px rgba(18,20,26,.55), 0 0 0 1px rgba(255,255,255,.06) inset;
+  }
+  .screen .grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay}
+  .screen .play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:78px;height:78px;border-radius:50%;
+    background:rgba(255,255,255,.14);backdrop-filter:blur(6px);
+    display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.4);
+    animation:pulse 2.8s ease-in-out infinite;
+  }
+  .screen .play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.28)}
+    50%{box-shadow:0 0 0 22px rgba(255,255,255,0)}
+  }
+  .screen .caption{
+    position:absolute;left:22px;bottom:20px;right:22px;color:#fff;
+  }
+  .screen .caption .tag{
+    display:inline-block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    background:var(--accent);padding:.32em .8em;border-radius:999px;font-weight:700;margin-bottom:.7em;
+  }
+  .screen .caption h3{font-family:var(--serif);font-size:1.24rem;font-weight:700;line-height:1.4}
+  .screen .caption p{font-size:.78rem;opacity:.72;margin-top:.3em}
+  .screen .timecode{
+    position:absolute;right:20px;top:18px;font-size:.7rem;letter-spacing:.12em;
+    color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums;
+    background:rgba(0,0,0,.32);padding:.3em .7em;border-radius:6px;
+  }
+  .float-card{
+    position:absolute;right:-18px;bottom:-26px;
+    background:var(--paper);border-radius:16px;padding:16px 20px;
+    box-shadow:0 24px 46px -22px rgba(18,20,26,.42);
+    display:flex;align-items:center;gap:.9rem;border:1px solid var(--line);
+  }
+  .float-card .fc-icon{
+    width:40px;height:40px;border-radius:11px;background:var(--teal);color:#fff;
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .float-card .fc-icon svg{width:19px;height:19px}
+  .float-card b{display:block;font-size:.88rem;line-height:1.3}
+  .float-card small{font-size:.72rem;color:var(--muted)}
+
+  /* ============ MARQUEE ============ */
+  .marquee{
+    background:var(--ink);color:rgba(246,244,239,.62);
+    overflow:hidden;padding:16px 0;border-block:1px solid var(--ink-2);
+  }
+  .marquee-track{display:flex;gap:3.4rem;white-space:nowrap;width:max-content;animation:scroll 42s linear infinite}
+  .marquee span{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:3.4rem}
+  .marquee span::after{content:"◆";color:var(--accent);font-size:.6rem}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ SECTION COMMON ============ */
+  section{padding:88px 0}
+  .sec-head{max-width:640px;margin-bottom:3rem}
+  .sec-head h2{
+    font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);
+    font-weight:800;line-height:1.2;letter-spacing:-.015em;margin:.8rem 0 .9rem;
+  }
+  .sec-head p{color:var(--muted);font-size:.96rem;line-height:1.95}
+  .sec-head.center{margin-inline:auto;text-align:center}
+  .sec-head.center .eyebrow{justify-content:center}
+
+  /* ============ VALUES / PILLARS ============ */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+  .pillar{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px 32px;position:relative;overflow:hidden;
+    transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+  }
+  .pillar:hover{transform:translateY(-6px);box-shadow:0 26px 50px -30px rgba(18,20,26,.34);border-color:transparent}
+  .pillar .num{
+    font-family:var(--serif);font-size:.78rem;font-weight:700;color:var(--accent);
+    letter-spacing:.16em;margin-bottom:1.4rem;display:block;
+  }
+  .pillar h3{font-family:var(--serif);font-size:1.16rem;font-weight:700;margin-bottom:.65rem}
+  .pillar p{font-size:.84rem;color:var(--muted);line-height:1.85}
+  .pillar .pl-ic{
+    position:absolute;right:20px;top:22px;width:34px;height:34px;opacity:.16;
+  }
+  .pillar .pl-ic svg{width:100%;height:100%;stroke:var(--ink)}
+  .pillar::after{
+    content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent);
+    transition:width .35s ease;
+  }
+  .pillar:hover::after{width:100%}
+
+  /* ============ FEATURED GRID ============ */
+  .featured{background:var(--paper-2);border-block:1px solid var(--line)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .feat-card{
+    background:#fff;border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line);display:flex;flex-direction:column;
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .feat-card:hover{transform:translateY(-6px);box-shadow:0 30px 54px -34px rgba(18,20,26,.36)}
+  .feat-card .thumb{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .feat-card .thumb svg{width:100%;height:100%;object-fit:cover}
+  .feat-card .thumb .dur{
+    position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.62);color:#fff;
+    font-size:.68rem;padding:.22em .6em;border-radius:5px;letter-spacing:.05em;
+    font-variant-numeric:tabular-nums;
+  }
+  .feat-card .thumb .cat{
+    position:absolute;left:12px;top:12px;background:rgba(255,255,255,.92);color:var(--ink);
+    font-size:.66rem;font-weight:700;padding:.3em .75em;border-radius:999px;letter-spacing:.06em;
+  }
+  .feat-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .feat-body h3{font-family:var(--serif);font-size:1.06rem;font-weight:700;line-height:1.46;margin-bottom:.55rem}
+  .feat-body p{font-size:.82rem;color:var(--muted);line-height:1.8;flex:1}
+  .feat-meta{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--line);
+    font-size:.74rem;color:var(--muted);
+  }
+  .feat-meta .author{display:flex;align-items:center;gap:.5rem}
+  .avatar{
+    width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+    font-size:.62rem;font-weight:700;color:#fff;flex-shrink:0;
+  }
+  .feat-meta .views{display:inline-flex;align-items:center;gap:.35em}
+  .feat-meta svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+
+  /* ============ ABOUT / EDITORIAL ============ */
+  .editorial{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+  .edi-visual{position:relative}
+  .edi-frame{
+    border-radius:22px;overflow:hidden;background:var(--ink);
+    aspect-ratio:5/4.4;position:relative;
+    box-shadow:0 36px 64px -34px rgba(18,20,26,.5);
+  }
+  .edi-frame svg{width:100%;height:100%}
+  .edi-badge{
+    position:absolute;left:-20px;top:34px;
+    background:var(--accent);color:#fff;border-radius:14px;
+    padding:14px 18px;box-shadow:0 18px 34px -18px rgba(226,84,44,.9);
+  }
+  .edi-badge b{display:block;font-family:var(--serif);font-size:1.5rem;line-height:1}
+  .edi-badge small{font-size:.66rem;letter-spacing:.14em;opacity:.86;text-transform:uppercase}
+  .edi-list{display:flex;flex-direction:column;gap:1.1rem;margin-top:2rem}
+  .edi-item{display:flex;gap:1rem;align-items:flex-start}
+  .edi-item .ei-n{
+    font-family:var(--serif);font-weight:800;font-size:.86rem;color:var(--accent);
+    border:1.5px solid var(--accent-soft);border-radius:9px;
+    width:34px;height:34px;display:grid;place-items:center;flex-shrink:0;
+  }
+  .edi-item h4{font-size:.94rem;font-weight:700;margin-bottom:.25rem}
+  .edi-item p{font-size:.82rem;color:var(--muted);line-height:1.75}
+
+  /* ============ NUMBERS ============ */
+  .numbers{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+  .numbers::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 12% 20%,rgba(226,84,44,.18),transparent 42%),
+      radial-gradient(circle at 88% 80%,rgba(47,125,116,.2),transparent 46%);
+  }
+  .numbers .wrap{position:relative;z-index:1}
+  .numbers .sec-head h2{color:var(--paper)}
+  .numbers .sec-head p{color:rgba(246,244,239,.6)}
+  .num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3rem}
+  .num-cell{
+    border:1px solid var(--line-l);border-radius:var(--radius);
+    padding:28px 24px 30px;background:rgba(255,255,255,.03);
+    transition:background .3s ease,border-color .3s ease;
+  }
+  .num-cell:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.24)}
+  .num-cell b{
+    font-family:var(--serif);font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;
+    line-height:1;display:block;letter-spacing:-.02em;
+  }
+  .num-cell b i{font-style:normal;color:var(--accent-2);font-size:.6em;margin-left:.15em}
+  .num-cell small{display:block;font-size:.78rem;color:rgba(246,244,239,.58);margin-top:.85rem;letter-spacing:.06em}
+
+  /* ============ PROCESS ============ */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;position:relative}
+  .step{
+    padding:34px 30px;border-radius:var(--radius);
+    background:#fff;border:1px solid var(--line);position:relative;
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .step:hover{transform:translateY(-5px);box-shadow:0 26px 48px -30px rgba(18,20,26,.3)}
+  .step .s-num{
+    font-family:var(--serif);font-size:2.6rem;font-weight:800;color:var(--accent-soft);
+    line-height:1;letter-spacing:-.04em;
+  }
+  .step h3{font-family:var(--serif);font-size:1.14rem;font-weight:700;margin:.9rem 0 .6rem}
+  .step p{font-size:.85rem;color:var(--muted);line-height:1.85}
+
+  /* ============ COMMUNITY / CARDS ============ */
+  .community{background:var(--paper-2);border-block:1px solid var(--line)}
+  .com-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+  .com-card{
+    display:flex;gap:1.2rem;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);padding:26px 28px;
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .com-card:hover{transform:translateY(-4px);box-shadow:0 24px 46px -28px rgba(18,20,26,.3)}
+  .com-card .cc-av{
+    width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+    font-family:var(--serif);font-weight:800;font-size:1.1rem;color:#fff;flex-shrink:0;
+  }
+  .com-card h4{font-size:.98rem;font-weight:700;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+  .com-card h4 .role{
+    font-size:.64rem;font-weight:600;letter-spacing:.08em;
+    background:var(--accent-soft);color:var(--accent);padding:.18em .6em;border-radius:999px;
+  }
+  .com-card p{font-size:.84rem;color:var(--muted);line-height:1.8;margin-top:.5rem}
+
+  /* ============ FAQ ============ */
+  .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
+  .faq-item{
+    background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    transition:border-color .3s ease;
+  }
+  .faq-item[open]{border-color:var(--accent)}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:20px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    font-weight:700;font-size:.95rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary .fi-ic{
+    width:24px;height:24px;border-radius:50%;background:var(--paper-2);
+    display:grid;place-items:center;flex-shrink:0;transition:transform .3s ease,background .3s ease;
+    position:relative;
+  }
+  .faq-item summary .fi-ic::before,
+  .faq-item summary .fi-ic::after{
+    content:"";position:absolute;background:var(--ink-2);border-radius:2px;
+  }
+  .faq-item summary .fi-ic::before{width:10px;height:2px}
+  .faq-item summary .fi-ic::after{width:2px;height:10px;transition:transform .3s ease}
+  .faq-item[open] summary .fi-ic{background:var(--accent);transform:rotate(90deg)}
+  .faq-item[open] summary .fi-ic::before,
+  .faq-item[open] summary .fi-ic::after{background:#fff}
+  .faq-item[open] summary .fi-ic::after{transform:scaleY(0)}
+  .faq-item .fa-body{padding:0 24px 22px;font-size:.86rem;color:var(--muted);line-height:1.9}
+
+  /* ============ CTA ============ */
+  .cta-band{
+    background:linear-gradient(135deg,var(--accent),#c93f1f 60%,#a8341a);
+    color:#fff;border-radius:26px;padding:56px 48px;position:relative;overflow:hidden;
+    display:grid;grid-template-columns:1.2fr .8fr;gap:2.4rem;align-items:center;
+  }
+  .cta-band::before{
+    content:"";position:absolute;right:-60px;top:-80px;width:340px;height:340px;
+    border-radius:50%;background:rgba(255,255,255,.09);
+  }
+  .cta-band::after{
+    content:"";position:absolute;right:80px;bottom:-140px;width:260px;height:260px;
+    border-radius:50%;background:rgba(255,255,255,.06);
+  }
+  .cta-band h2{
+    font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;
+    line-height:1.24;position:relative;z-index:1;
+  }
+  .cta-band p{font-size:.9rem;opacity:.86;margin-top:.9rem;line-height:1.85;position:relative;z-index:1;max-width:30em}
+  .cta-form{position:relative;z-index:1;display:flex;flex-direction:column;gap:.8rem}
+  .cta-form input{
+    width:100%;padding:1em 1.2em;border-radius:12px;border:1.5px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.13);color:#fff;font-size:.9rem;font-family:inherit;
+    outline:none;transition:border-color .25s ease,background .25s ease;
+  }
+  .cta-form input::placeholder{color:rgba(255,255,255,.7)}
+  .cta-form input:focus{border-color:#fff;background:rgba(255,255,255,.22)}
+  .cta-form button{
+    padding:1em;border-radius:12px;background:var(--ink);color:#fff;font-weight:700;font-size:.9rem;
+    transition:transform .25s ease,background .25s ease;
+  }
+  .cta-form button:hover{transform:translateY(-2px);background:#000}
+  .cta-note{font-size:.7rem;opacity:.7;text-align:center}
+
+  /* ============ FOOTER ============ */
+  footer.site{background:var(--ink);color:rgba(246,244,239,.66);padding:72px 0 0}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.6rem;padding-bottom:3rem}
+  .foot-brand .brand-name{color:var(--paper);font-size:1.3rem}
+  .foot-brand .brand-sub{color:rgba(246,244,239,.4)}
+  .foot-brand p{font-size:.82rem;line-height:1.9;margin-top:1.2rem;max-width:26em}
+  .foot-social{display:flex;gap:.7rem;margin-top:1.4rem}
+  .foot-social a{
+    width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+    border:1px solid rgba(255,255,255,.14);transition:background .25s ease,border-color .25s ease;
+  }
+  .foot-social a:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+  .foot-social svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .foot-col h5{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,244,239,.4);margin-bottom:1.1rem}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .foot-col a{font-size:.84rem;opacity:.8;transition:opacity .2s ease,color .2s ease}
+  .foot-col a:hover{opacity:1;color:var(--accent-2)}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.1);padding:1.4rem 0;
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+    font-size:.76rem;opacity:.56;
+  }
+  .foot-bottom .fb-links{display:flex;gap:1.4rem;flex-wrap:wrap}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* scroll top */
+  .to-top{
+    position:fixed;right:26px;bottom:26px;width:46px;height:46px;border-radius:50%;
+    background:var(--ink);color:#fff;display:grid;place-items:center;z-index:60;
+    opacity:0;pointer-events:none;transform:translateY(12px);
+    transition:opacity .3s ease,transform .3s ease,background .3s ease;
+    box-shadow:0 14px 28px -12px rgba(18,20,26,.6);
+  }
+  .to-top.show{opacity:1;pointer-events:auto;transform:none}
+  .to-top:hover{background:var(--accent)}
+  .to-top svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;gap:2.6rem}
+    .hero-visual{max-width:520px}
+    .pillars{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:repeat(2,1fr)}
+    .editorial{grid-template-columns:1fr;gap:2.6rem}
+    .edi-badge{left:auto;right:16px;top:auto;bottom:-16px}
+    .num-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr}
+    .com-grid{grid-template-columns:1fr}
+    .cta-band{grid-template-columns:1fr;padding:42px 32px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  }
+  @media(max-width:720px){
+    .topbar .tb-left span:nth-child(2){display:none}
+    .topbar .tb-right a:first-child{display:none}
+    nav.menu{display:none}
+    .pillars,.feat-grid,.num-grid{grid-template-columns:1fr}
+    section{padding:64px 0}
+    .hero{padding:52px 0 44px}
+    .hero-stats{gap:1.6rem}
+    .foot-grid{grid-template-columns:1fr}
+    .float-card{right:8px;bottom:-20px;padding:12px 16px}
+    .cta-band{padding:34px 24px}
+    .foot-bottom{flex-direction:column;align-items:flex-start}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <span><i class="dot"></i>九一探花91版 · 内容探索平台</span>
+      <span>每日更新影像与人物纪实</span>
+    </div>
+    <div class="tb-right">
+      <a href="#community">创作者中心</a>
+      <a href="#cta">加入社区</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="site">
+  <div class="wrap">
+    <div class="nav">
+      <a href="#" class="brand" aria-label="九一探花91版首页">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/>
+          </svg>
+        </span>
+        <span>
+          <span class="brand-name">九一探花91版</span>
+          <span class="brand-sub">Explore · Film · Community</span>
+        </span>
+      </a>
+      <nav class="menu">
+        <a href="#pillars">平台理念</a>
+        <a href="#featured">精选影像</a>
+        <a href="#about">关于我们</a>
+        <a href="#community">创作者社区</a>
+        <a href="#faq">常见问题</a>
+      </nav>
+      <a href="#cta" class="nav-cta">
+        开始探索
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Video Discovery Platform</span>
+      <h1>九一探花91版<br>把每一种<em>真实表达</em>拍进镜头里</h1>
+      <p class="hero-lead">
+        九一探花91版是一个以短视频与人物纪实为核心的影像探索平台。<strong>我们不追逐喧嚣的热点</strong>，而是把镜头交给普通人的日常、手艺人的坚持、街头的好奇与生活的褶皱。在这里，每一次点击都是一次探花式的发现。
+      </p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn-primary">
+          浏览精选影像
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg>
+        </a>
+        <a href="#about" class="btn-ghost">了解平台故事</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hs-num" data-count="12800">0<span>+</span></div>
+          <div class="hs-label">影像作品</div>
+        </div>
+        <div>
+          <div class="hs-num" data-count="3600">0<span>+</span></div>
+          <div class="hs-label">入驻创作者</div>
+        </div>
+        <div>
+          <div class="hs-num" data-count="186">0<span>万</span></div>
+          <div class="hs-label">月度观看</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="screen">
+        <svg class="grain" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3a2a24"/>
+              <stop offset=".55" stop-color="#2c3040"/>
+              <stop offset="1" stop-color="#1c1f28"/>
+            </linearGradient>
+            <radialGradient id="hg2" cx=".7" cy=".3" r=".7">
+              <stop offset="0" stop-color="#f3a13b" stop-opacity=".38"/>
+              <stop offset="1" stop-color="#f3a13b" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="320" fill="url(#hg1)"/>
+          <rect width="400" height="320" fill="url(#hg2)"/>
+          <g opacity=".22" stroke="#fff" stroke-width="1">
+            <circle cx="320" cy="70" r="46" fill="none"/>
+            <circle cx="320" cy="70" r="70" fill="none"/>
+            <path d="M0 250 Q90 200 180 240 T400 210" fill="none"/>
+            <path d="M0 280 Q120 240 220 270 T400 250" fill="none"/>
+          </g>
+          <g opacity=".16" fill="#fff">
+            <rect x="40" y="40" width="70" height="90" rx="6"/>
+            <rect x="126" y="40" width="70" height="56" rx="6"/>
+            <rect x="40" y="146" width="156" height="38" rx="6"/>
+          </g>
+        </svg>
+        <span class="timecode">REC · 00:04:12</span>
+        <div class="play">
+          <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg>
+        </div>
+        <div class="caption">
+          <span class="tag">本期推荐</span>
+          <h3>城市边缘 · 清晨四点的早餐摊</h3>
+          <p>九一探花91版 · 人物纪实 · 14 分钟</p>
+        </div>
+      </div>
+      <div class="float-card">
+        <span class="fc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17c3 0 4-6 7-6s4 6 7 6 4-3 4-3"/>
+            <path d="M3 8h4"/>
+          </svg>
+        </span>
+        <div>
+          <b>本周新增 312 部作品</b>
+          <small>来自 96 位创作者的真实记录</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>人物纪实</span><span>城市观察</span><span>手艺与匠心</span><span>生活切片</span><span>街头故事</span><span>创作者访谈</span><span>短纪录片</span>
+    <span>人物纪实</span><span>城市观察</span><span>手艺与匠心</span><span>生活切片</span><span>街头故事</span><span>创作者访谈</span><span>短纪录片</span>
+  </div>
+</div>
+
+<!-- ===== PILLARS ===== -->
+<section id="pillars">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our Principles</span>
+      <h2>九一探花91版坚持的四件事</h2>
+      <p>在所有内容平台都在争夺注意力的时代，我们更愿意把时间花在"值得被看见"的影像上。九一探花91版以四项原则作为内容与社区的底座。</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <span class="num">01</span>
+        <span class="pl-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M16 16l4 4"/></svg>
+        </span>
+        <h3>以探索为方法</h3>
+        <p>不依赖单一榜单，我们鼓励交叉发现。九一探花91版的内容路径像一次真实的探花，从一条线索走向另一片风景。</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="num">02</span>
+        <span class="pl-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 20V8l8-4 8 4v12"/><path d="M4 20h16"/><path d="M9 20v-6h6v6"/></svg>
+        </span>
+        <h3>以真实为底线</h3>
+        <p>所有纪实类作品需标注拍摄背景与时间，平台提供拍摄溯源说明，让观众知道自己看到的是什么。</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="num">03</span>
+        <span class="pl-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.7A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+        </span>
+        <h3>以社区为土壤</h3>
+        <p>创作者可以发起合拍、共建选题、互评镜头语言。九一探花91版相信，好内容产生于持续交流。</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="num">04</span>
+        <span class="pl-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+        </span>
+        <h3>以观看为体验</h3>
+        <p>从播放器的字幕样式到片单的排列逻辑，九一探花91版把观看本身当作被设计的一部分，而非附属功能。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED ===== -->
+<section class="featured" id="featured">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Featured Films</span>
+      <h2>九一探花91版本周精选影像</h2>
+      <p>由编辑部与社区共同选出的六部作品，覆盖人物、城市、手艺与日常。每一部都附有创作者的拍摄手记，点击即可阅读。</p>
+    </div>
+    <div class="feat-grid">
+
+      <article class="feat-card reveal">
+        <div class="thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="f1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f7d74"/><stop offset="1" stop-color="#1f4f4a"/></linearGradient></defs>
+            <rect width="400" height="250" fill="url(#f1)"/>
+            <g opacity=".3" stroke="#fff" fill="none"><path d="M0 180 Q100 140 200 175 T400 150"/><path d="M0 210 Q120 175 240 205 T400 185"/></g>
+            <circle cx="300" cy="70" r="34" fill="#ffd9c2" opacity=".55"/>
+          </svg>
+          <span class="cat">人物纪实</span>
+          <span class="dur">14:02</span>
+        </div>
+        <div class="feat-body">
+          <h3>清晨四点的早餐摊</h3>
+          <p>一对夫妻在城市高架下摆了十七年的早餐摊。镜头跟随他们从凌晨备料到收摊，记录一段被忽略的城市节奏。</p>
+          <div class="feat-meta">
+            <span class="author"><span class="avatar" style="background:#2f7d74">林</span>林见鹿</span>
+            <span class="views"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>3.6 万</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="feat-card reveal">
+        <div class="thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="f2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2542c"/><stop offset="1" stop-color="#f3a13b"/></linearGradient></defs>
+            <rect width="400" height="250" fill="url(#f2)"/>
+            <g opacity=".34" fill="#fff"><rect x="40" y="60" width="120" height="150" rx="8"/><rect x="180" y="100" width="80" height="110" rx="8"/><rect x="280" y="40" width="70" height="170" rx="8"/></g>
+          </svg>
+          <span class="cat">城市观察</span>
+          <span class="dur">09:36</span>
+        </div>
+        <div class="feat-body">
+          <h3>一条天桥上的十二种人生</h3>
+          <p>摄影师在同一天桥拍了三十天，剪出十二个人的脚步与表情。九一探花91版推出这部长镜短片，呈现代与城市的关系。</p>
+          <div class="feat-meta">
+            <span class="author"><span class="avatar" style="background:#e2542c">沈</span>沈薄暮</span>
+            <span class="views"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>2.1 万</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="feat-card reveal">
+        <div class="thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="f3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1f28"/><stop offset="1" stop-color="#3a2a24"/></linearGradient></defs>
+            <rect width="400" height="250" fill="url(#f3)"/>
+            <g opacity=".5" fill="none" stroke="#ffd9c2" stroke-width="2"><circle cx="150" cy="130" r="46"/><circle cx="150" cy="130" r="66"/><path d="M220 130h120"/></g>
+          </svg>
+          <span class="cat">手艺匠心</span>
+          <span class="dur">18:44</span>
+        </div>
+        <div class="feat-body">
+          <h3>修表匠的最后一间铺子</h3>
+          <p>七十三岁的修表匠在旧商场里守着一间不足四平米的铺子。他的手上有一百种小零件的记忆，也有一整个时代的耐心。</p>
+          <div class="feat-meta">
+            <span class="author"><span class="avatar" style="background:#3a2a24">顾</span>顾拾光</span>
+            <span class="views"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>5.4 万</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="feat-card reveal">
+        <div class="thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="f4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f7d74"/><stop offset="1" stop-color="#12141a"/></linearGradient></defs>
+            <rect width="400" height="250" fill="url(#f4)"/>
+            <g opacity=".4" fill="#fff"><circle cx="90" cy="90" r="30"/><circle cx="200" cy="150" r="46"/><circle cx="320" cy="80" r="24"/></g>
+          </svg>
+          <span class="cat">生活切片</span>
+          <span class="dur">06:18</span>
+        </div>
+        <div class="feat-body">
+          <h3>我的邻居们与一条旧巷子</h3>
+          <p>九一探花91版社区共创作。十位住在同一条巷子的居民，各拍下一天的片段，最后拼成一部属于他们的日常影像。</p>
+          <div class="feat-meta">
+            <span class="author"><span class="avatar" style="background:#2f7d74">合</span>巷子共创组</span>
+            <span class="views"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>1.8 万</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="feat-card reveal">
+        <div class="thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="f5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3a13b"/><stop offset="1" stop-color="#e2542c"/></linearGradient></defs>
+            <rect width="400" height="250" fill="url(#f5)"/>
+            <g opacity=".42" fill="none" stroke="#fff" stroke-width="2"><path d="M0 180 Q100 120 200 160 T400 130"/><path d="M0 210 Q120 160 240 200 T400 170"/></g>
+          </svg>
+          <span class="cat">创作者访谈</span>
+          <span class="dur">11:27</span>
+        </div>
+        <div class="feat-body">
+          <h3>对话：我们为什么拿起相机</h3>
+          <p>三位长期在九一探花91版更新的创作者，聊了聊拍摄、犹豫与被看见的时刻。这是一次关于动机的坦白。</p>
+          <div class="feat-meta">
+            <span class="author"><span class="avatar" style="background:#f3a13b">编</span>编辑部</span>
+            <span class="views"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>2.7 万</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="feat-card reveal">
+        <div class="thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="f6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1f28"/><stop offset="1" stop-color="#2f7d74"/></linearGradient></defs>
+            <rect width="400" height="250" fill="url(#f6)"/>
+            <g opacity=".45" fill="#ffd9c2"><rect x="60" y="150" width="30" height="60"/><rect x="110" y="110" width="30" height="100"/><rect x="160" y="70" width="30" height="140"/><rect x="240" y="120" width="30" height="90"/><rect x="300" y="90" width="30" height="120"/></g>
+          </svg>
+          <span class="cat">短纪录片</span>
+          <span class="dur">22:05</span>
+        </div>
+        <div class="feat-body">
+          <h3>江边的早班船</h3>
+          <p>一条每天清晨出发的渡船，载着菜农、学生与去对岸上班的人。九一探花91版跟船七天，记录长江边的一段通勤线。</p>
+          <div class="feat-meta">
+            <span class="author"><span class="avatar" style="background:#1c1f28">渡</span>渡口映像</span>
+            <span class="views"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>4.2 万</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT / EDITORIAL ===== -->
+<section id="about">
+  <div class="wrap editorial">
+    <div class="edi-visual reveal">
+      <div class="edi-frame">
+        <svg viewBox="0 0 500 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="ag1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#262a36"/>
+              <stop offset=".6" stop-color="#3a2a24"/>
+              <stop offset="1" stop-color="#1c1f28"/>
+            </linearGradient>
+            <radialGradient id="ag2" cx=".35" cy=".3" r=".75">
+              <stop offset="0" stop-color="#e2542c" stop-opacity=".34"/>
+              <stop offset="1" stop-color="#e2542c" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="500" height="440" fill="url(#ag1)"/>
+          <rect width="500" height="440" fill="url(#ag2)"/>
+          <g opacity=".28" stroke="#ffd9c2" fill="none" stroke-width="1.4">
+            <rect x="60" y="90" width="160" height="220" rx="10"/>
+            <rect x="250" y="140" width="190" height="170" rx="10"/>
+            <path d="M60 340h380"/>
+            <circle cx="360" cy="90" r="34"/>
+          </g>
+          <g opacity=".6" fill="#ffd9c2">
+            <circle cx="140" cy="200" r="5"/>
+            <circle cx="180" cy="230" r="3"/>
+            <circle cx="320" cy="220" r="4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="edi-badge">
+        <b>91</b>
+        <small>Edition</small>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">About 九一探花91版</span>
+      <h2 class="serif" style="font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:800;line-height:1.22;letter-spacing:-.015em;margin:.8rem 0 1rem;">一个把影像当作长期事业的平台</h2>
+      <p style="color:var(--muted);font-size:.95rem;line-height:2;">
+        九一探花91版起步于一次小规模的影像放映会。几位纪录片爱好者把各自的短片带到一间旧书店，没想到来了四十多个人。从那以后，我们决定把这个"放映 + 交流"的形式固定下来，并逐渐长成一个线上的内容平台。九一探花91版不做流量竞赛的裁判，只做那些值得被认真看完的作品的编辑与整理者。
+      </p>
+      <div class="edi-list">
+        <div class="edi-item">
+          <span class="ei-n">1</span>
+          <div>
+            <h4>编辑推荐与社区发现并行</h4>
+            <p>每周由编辑团队挑选主题片单，同时保留社区自发的"探花路线"，让推荐既有判断也有偶然。</p>
+          </div>
+        </div>
+        <div class="edi-item">
+          <span class="ei-n">2</span>
+          <div>
+            <h4>拍摄手记与幕后说明</h4>
+            <p>九一探花91版要求纪实类作品附带拍摄背景、时长与素材来源说明，让观看更有上下文。</p>
+          </div>
+        </div>
+        <div class="edi-item">
+          <span class="ei-n">3</span>
+          <div>
+            <h4>持续更新的创作者档案</h4>
+            <p>每位创作者拥有独立的作品年表与创作自述，平台不隐藏早期作品，也保留创作的完整轨迹。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NUMBERS ===== -->
+<section class="numbers" id="numbers">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">By The Numbers</span>
+      <h2>九一探花91版的社区量级</h2>
+      <p>数字不是目的，但它能说明有多少人愿意把时间交给真实的影像。以下数据来自平台截至最近一次统计的公开口径。</p>
+    </div>
+    <div class="num-grid">
+      <div class="num-cell reveal">
+        <b data-count="12800">0<i>+</i></b>
+        <small>累计影像作品</small>
+      </div>
+      <div class="num-cell reveal">
+        <b data-count="3600">0<i>+</i></b>
+        <small>入驻创作者</small>
+      </div>
+      <div class="num-cell reveal">
+        <b data-count="186">0<i>万</i></b>
+        <small>月度观看人次</small>
+      </div>
+      <div class="num-cell reveal">
+        <b data-count="42">0<i>城</i></b>
+        <small>线下放映覆盖城市</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEPS ===== -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>如何在九一探花91版开始与持续</h2>
+      <p>无论你是观众还是创作者，平台都提供了清晰的路径。三步进入，交给你自己的节奏。</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="s-num">01</span>
+        <h3>选择你的探索起点</h3>
+        <p>可以从编辑推荐片单进入，也可以从感兴趣的城市、行业或人物关键词开始。九一探花91版会记住你的兴趣路径。</p>
+      </div>
+      <div class="step reveal">
+        <span class="s-num">02</span>
+        <h3>观看并留下你的手记</h3>
+        <p>每部作品下方都可写观看手记，与创作者互动。平台鼓励长评论与具体建议，而不是简单的点赞。</p>
+      </div>
+      <div class="step reveal">
+        <span class="s-num">03</span>
+        <h3>发布或参与共创作</h3>
+        <p>完成作品后，你可以自主上传，也可以加入社区发起的主题共创。九一探花91版为共创提供统一的拍摄与标注规范。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMUNITY ===== -->
+<section class="community" id="community">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Creator Community</span>
+      <h2>九一探花91版创作者社区</h2>
+      <p>社区的活力来自持续的交流。这里有几位长期创作者的声音，也可以看到平台如何与他们的创作一起成长。</p>
+    </div>
+    <div class="com-grid">
+      <div class="com-card reveal">
+        <div class="cc-av" style="background:#2f7d74">林</div>
+        <div>
+          <h4>林见鹿 <span class="role">人物纪实</span></h4>
+          <p>"我在九一探花91版发了第一支片子，那时没什么人看。后来一条评论说'这个人像我父亲'，我才意识到原来镜头真的可以穿过屏幕。"</p>
+        </div>
+      </div>
+      <div class="com-card reveal">
+        <div class="cc-av" style="background:#e2542c">沈</div>
+        <div>
+          <h4>沈薄暮 <span class="role">城市观察</span></h4>
+          <p>"平台不会催更，但会问你下一部想拍什么。九一探花91版的编辑会针对素材提建议，这种被认真对待的感觉很少见。"</p>
+        </div>
+      </div>
+      <div class="com-card reveal">
+        <div class="cc-av" style="background:#3a2a24">顾</div>
+        <div>
+          <h4>顾拾光 <span class="role">手艺匠心</span></h4>
+          <p>"我拍修表匠拍了三个月。九一探花91版帮我们做了拍摄背景核验，还安排了一次线下放映，老人们第一次看到自己出现在银幕上。"</p>
+        </div>
+      </div>
+      <div class="com-card reveal">
+        <div class="cc-av" style="background:#f3a13b">渡</div>
+        <div>
+          <h4>渡口映像 <span class="role">短纪录片</span></h4>
+          <p>"我在这里认识了几位同样拍长江的创作者，我们合拍了渡船系列。九一探花91版的共创作工具让分镜和素材管理都变得顺畅。"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>关于九一探花91版的常见问题</h2>
+      <p>以下回答整理自社区反馈，若仍有疑问，可通过页面底部的方式与我们联系。</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>九一探花91版是什么样的平台？<span class="fi-ic"></span></summary>
+        <div class="fa-body">九一探花91版是一个以短视频与短纪录片为主的内容探索平台，强调真实记录、编辑推荐与创作者社区的长期交流。它既有公开作品浏览，也支持创作者上传与主题共创。</div>
+      </details>
+      <details class="faq-item">
+        <summary>我可以免费浏览所有作品吗？<span class="fi-ic"></span></summary>
+        <div class="fa-body">大部分作品对所有人免费开放。少部分由创作者选择设为社区可见或付费支持，具体以作品页面标注为准。九一探花91版不会对基础观看设置门槛。</div>
+      </details>
+      <details class="faq-item">
+        <summary>如何成为九一探花91版的创作者？<span class="fi-ic"></span></summary>
+        <div class="fa-body">注册账号后进入创作者中心，完成基本资料并上传作品即可。纪实类作品需要补充拍摄说明。平台会在一定时间内完成内容合规审核，并提供修改建议。</div>
+      </details>
+      <details class="faq-item">
+        <summary>平台如何保证内容的真实性？<span class="fi-ic"></span></summary>
+        <div class="fa-body">九一探花91版要求纪实作品标注拍摄时间、地点与背景说明，并对高关注内容进行抽样核验。若发现刻意虚构或误导性剪辑，平台会要求更正或下架。</div>
+      </details>
+      <details class="faq-item">
+        <summary>线下放映如何参与？<span class="fi-ic"></span></summary>
+        <div class="fa-body">平台会定期公布合作城市的放映场次与主题。感兴趣的观众可在活动页面报名，创作者也可申请在自己的城市发起小型放映，九一探花91版会提供片源授权与基础指引。</div>
+      </details>
+      <details class="faq-item">
+        <summary>作品版权归谁所有？<span class="fi-ic"></span></summary>
+        <div class="fa-body">作品版权归创作者所有。九一探花91版仅在平台内展示与推荐所需范围内获得授权，不改变版权归属。任何商业用途须另行获得创作者同意。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>把你想讲的故事，<br>交给九一探花91版</h2>
+        <p>留下邮箱，我们会发送创作者入门指引、拍摄规范与本月主题片单。也欢迎你成为观众，从一条影像开始探索。</p>
+      </div>
+      <form class="cta-form" onsubmit="return subscribe(event)">
+        <input type="email" id="emailInput" placeholder="你的邮箱地址" required aria-label="邮箱地址">
+        <button type="submit">获取创作者指南</button>
+        <div class="cta-note" id="formNote">我们不会发送垃圾邮件，可随时退订。</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand" style="margin-bottom:.4rem">
+          <span class="brand-mark" style="width:38px;height:38px">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#fff"/></svg>
+          </span>
+          <span>
+            <span class="brand-name">九一探花91版</span>
+            <span class="brand-sub">Explore · Film · Community</span>
+          </span>
+        </div>
+        <p>九一探花91版以影像记录真实，以社区延续交流。我们相信，值得被看见的故事往往藏在日常的缝隙里。</p>
+        <div class="foot-social">
+          <a href="#" aria-label="社交平台"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="视频频道"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="邮件联系"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>平台</h5>
+        <ul>
+          <li><a href="#pillars">平台理念</a></li>
+          <li><a href="#featured">精选影像</a></li>
+          <li><a href="#about">关于我们</a></li>
+          <li><a href="#numbers">数据说明</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>社区</h5>
+        <ul>
+          <li><a href="#community">创作者档案</a></li>
+          <li><a href="#how">如何开始</a></li>
+          <li><a href="#cta">加入方式</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>其他</h5>
+        <ul>
+          <li><a href="#">内容规范</a></li>
+          <li><a href="#">版权与授权</a></li>
+          <li><a href="#">隐私说明</a></li>
+          <li><a href="#">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2025</span> 九一探花91版 · 保留所有权利</span>
+      <span class="fb-links">
+        <a href="#">使用条款</a>
+        <a href="#">隐私政策</a>
+        <a href="#">内容投诉</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="返回顶部">
+  <svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  // ===== 年份 =====
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== 数字滚动动画 =====
+  function animateCount(el){
+    const target = parseInt(el.dataset.count, 10);
+    if(!target) return;
+    const duration = 1600;
+    const start = performance.now();
+    const fmt = n => n.toLocaleString('zh-CN');
+    function tick(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.floor(eased * target);
+      const suffix = el.querySelector('span, i');
+      el.firstChild.nodeValue = fmt(val);
+      if(p < 1) requestAnimationFrame(tick);
+      else el.firstChild.nodeValue = fmt(target);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ===== 滚动出现 =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+        // 统计数字
+        if(entry.target.classList.contains('num-cell')){
+          const b = entry.target.querySelector('b');
+          if(b) animateCount(b);
+        }
+      }
+    });
+  }, {threshold: 0.15, rootMargin: '0px 0px -40px 0px'});
+  revealEls.forEach(el => io.observe(el));
+
+  // hero 数字（加载后立即）
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hs-num').forEach((el, i) => {
+      setTimeout(() => animateCount(el), 200 * i);
+    });
+  });
+
+  // ===== 返回顶部 =====
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 560) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  }, {passive:true});
+  toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // ===== 表单 =====
+  function subscribe(e){
+    e.preventDefault();
+    const input = document.getElementById('emailInput');
+    const note = document.getElementById('formNote');
+    const val = (input.value || '').trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    if(!ok){
+      note.textContent = '请填写有效的邮箱地址。';
+      note.style.opacity = '1';
+      input.focus();
+      return false;
+    }
+    note.textContent = '已收到，指南将在 24 小时内发送至 ' + val;
+    note.style.opacity = '1';
+    input.value = '';
+    return false;
+  }
+
+  // ===== 平滑滚动（兼容不支持 scroll-behavior 的浏览器） =====
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(ev){
+      const id = this.getAttribute('href');
+      if(id && id.length > 1){
+        const target = document.querySelector(id);
+        if(target){
+          ev.preventDefault();
+          const y = target.getBoundingClientRect().top + window.scrollY - 70;
+          window.scrollTo({top: y, behavior: 'smooth'});
+        }
+      }
+    });
+  });
+
+  // ===== FAQ 互斥展开（可选轻交互） =====
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if(item.open){
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if(other !== item) other.open = false;
+        });
+      }
+    });
+  });
+</script>
+</body>
+  </html>
